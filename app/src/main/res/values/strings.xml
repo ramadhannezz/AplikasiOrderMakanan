@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application2</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="captcha">Captcha</string>
+    <string name="gambar_apa_yang_ditampilkan_diatas">Gambar apa yang ditampilkan diatas?</string>
+</resources>

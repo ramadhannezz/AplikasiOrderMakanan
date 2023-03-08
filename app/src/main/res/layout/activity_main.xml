@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
+    android:paddingTop="40dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- Logo Image View -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="326dp"
+        android:layout_height="174dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:src="@drawable/sharinggan"
+        />
+
+    <!-- Username EditText -->
+    <EditText
+        android:id="@+id/username_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logoImageView"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/abu"
+        android:drawableStart="@drawable/mail"
+        android:drawablePadding="16dp"
+        android:hint="Username"
+        android:padding="16dp"
+        android:autofillHints=""
+        tools:ignore="TextFields,VisualLintTextFieldSize" />
+
+    <!-- Password EditText -->
+    <EditText
+        android:id="@+id/password_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username_edittext"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/abu"
+        android:drawableStart="@drawable/lock"
+        android:drawablePadding="16dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:autofillHints=""
+        tools:ignore="VisualLintTextFieldSize" />
+
+    <!-- Login Button -->
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_edittext"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/white"
+        android:text="Login"
+        tools:ignore="VisualLintButtonSize" />
+
+    <TextView
+        android:id="@+id/forgot_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_button"
+        android:text="Forgot Password?"
+        android:textColor="@color/purple_500"
+        android:textSize="16sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="20dp"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="VisualLintButtonSize"/>
+
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forgot_button"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/white"
+        android:text="Register"
+        tools:ignore="VisualLintButtonSize" />
+
+</RelativeLayout>
