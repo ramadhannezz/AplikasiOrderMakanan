@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -56,7 +57,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET"
+        tools:ignore="ManifestOrder,WrongManifestParent" />
 </manifest>

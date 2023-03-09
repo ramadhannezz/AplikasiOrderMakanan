@@ -1,10 +1,8 @@
 package com.rama.myapplication2;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginSuccessActivity extends AppCompatActivity {
@@ -25,7 +23,7 @@ public class LoginSuccessActivity extends AppCompatActivity {
         String username = intent.getStringExtra("username");
 
         // menampilkan username pada TextView
-        usernameTextView.setText("Welcome, " + username);
+        usernameTextView.setText("Selamat datang " + username);
 
         // menambahkan listener pada tombol untuk berpindah ke halaman MainActivity
         homeButton.setOnClickListener(v -> {
