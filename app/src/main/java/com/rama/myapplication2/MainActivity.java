@@ -1,12 +1,15 @@
 package com.rama.myapplication2;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mUsernameEditText = findViewById(R.id.username_edittext);
         mPasswordEditText = findViewById(R.id.password_edittext);
         mLoginButton = findViewById(R.id.login_button);
@@ -37,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
                     i.putExtra("username", username);
                     startActivity(i);
                 }
-
-
             }
         });
 
@@ -46,11 +48,26 @@ public class MainActivity extends AppCompatActivity {
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intent untuk membuka RegisterActivity
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
+                showAlert();
             }
         });
+    }
+            private void showAlert() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Alert");
+                builder.setMessage("Apakah anda yakin ingin membuat akun!?");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Tambahkan logika yang diinginkan di sini
+                        Log.d("Alert", "Tombol OK diklik.");
+                        // Intent untuk membuka RegisterActivity
+                        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                        startActivity(intent);
+            }
+        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
     }
 }
 

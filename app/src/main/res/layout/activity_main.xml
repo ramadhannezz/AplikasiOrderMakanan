@@ -5,10 +5,13 @@
     android:id="@+id/login_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="10dp"
-    android:paddingTop="40dp"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/bg3">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#77FFFFFF"/>
 
     <!-- Logo Image View -->
     <ImageView
@@ -18,8 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
-        android:src="@drawable/sharinggan"
-        />
+        android:src="@drawable/logo" />
 
     <!-- Username EditText -->
     <EditText
@@ -30,8 +32,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="49dp"
         android:layout_marginEnd="20dp"
+        android:textColor="@color/black"
         android:background="@color/abu"
         android:drawableStart="@drawable/mail"
+        android:backgroundTint="@color/white"
         android:drawablePadding="16dp"
         android:hint="Username"
         android:padding="16dp"
@@ -49,6 +53,7 @@
         android:layout_marginEnd="20dp"
         android:background="@color/abu"
         android:drawableStart="@drawable/lock"
+        android:backgroundTint="@color/white"
         android:drawablePadding="16dp"
         android:hint="Password"
         android:inputType="textPassword"
@@ -56,45 +61,50 @@
         android:autofillHints=""
         tools:ignore="VisualLintTextFieldSize" />
 
-    <!-- Login Button -->
-
-    <Button
-        android:id="@+id/login_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/password_edittext"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="20dp"
-        android:textColor="@color/white"
-        android:text="Login"
-        tools:ignore="VisualLintButtonSize" />
 
     <TextView
         android:id="@+id/forgot_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_button"
+        android:layout_below="@id/password_edittext"
         android:text="Forgot Password?"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="26dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="20dp"
         android:layout_gravity="center_horizontal"
         tools:ignore="VisualLintButtonSize"/>
 
+    <!-- Login Button -->
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/forgot_button"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginRight="20dp"
+        android:text="Login"
+        android:textColor="@color/black"
+        android:backgroundTint="#2CB0ED"
+        android:textStyle="bold"
+        tools:ignore="VisualLintButtonSize" />
 
     <Button
         android:id="@+id/register_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/forgot_button"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="20dp"
-        android:textColor="@color/white"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/forgot_button"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginRight="20dp"
         android:text="Register"
+        android:textColor="@color/black"
+        android:backgroundTint="#2CB0ED"
+        android:textStyle="bold"
         tools:ignore="VisualLintButtonSize" />
+
 
 </RelativeLayout>

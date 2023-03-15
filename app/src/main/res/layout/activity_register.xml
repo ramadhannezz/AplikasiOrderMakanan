@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:paddingHorizontal="10dp"
-    android:paddingTop="40dp">
+    android:paddingTop="40dp"
+    android:background="@drawable/bg3">
 
     <!-- Logo Image View -->
 

@@ -1,13 +1,18 @@
 package com.rama.myapplication2;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
-public class LoginSuccessActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+
+public class LoginSuccessActivity extends AppCompatActivity implements InputDialogFragment.InputDialogListener {
 
     private TextView usernameTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +32,18 @@ public class LoginSuccessActivity extends AppCompatActivity {
 
         // menambahkan listener pada tombol untuk berpindah ke halaman MainActivity
         homeButton.setOnClickListener(v -> {
-            Intent i = new Intent(LoginSuccessActivity.this, MainActivity.class);
-            startActivity(i);
+            InputDialogFragment dialog = new InputDialogFragment(LoginSuccessActivity.this);
+            dialog.show(getSupportFragmentManager(), "InputDialogFragment");
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            CustomDialogFragment customDialogFragment = new CustomDialogFragment();
+            customDialogFragment.show(fragmentManager, "CustomDialogFragment");
+
         });
     }
+
+    @Override
+    public void onInputText(String inputText) {
+        Toast.makeText(this, "Welcome " + inputText, Toast.LENGTH_SHORT).show();
+    }
 }
+
