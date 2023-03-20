@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.rama.myapplication2.model_alertdialog.InputDialog;
+
 public class LoginSuccessActivity extends AppCompatActivity implements InputDialog.InputDialogListener {
 
     private TextView usernameTextView;

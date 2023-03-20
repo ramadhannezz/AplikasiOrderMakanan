@@ -1,4 +1,4 @@
-package com.rama.myapplication2;
+package com.rama.myapplication2.model_alertdialog;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -10,6 +10,9 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
+
+import com.rama.myapplication2.HomeActivity;
+import com.rama.myapplication2.R;
 
 public class InputDialog extends DialogFragment {
 
@@ -36,7 +39,7 @@ public class InputDialog extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         inputText = mInputEditText.getText().toString();
-                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        Intent intent = new Intent(getActivity(), HomeActivity.class);
                         intent.putExtra("inputText", inputText);
                         startActivity(intent);
                         dismiss();
