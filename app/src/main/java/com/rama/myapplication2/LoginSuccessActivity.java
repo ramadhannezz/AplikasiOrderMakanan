@@ -7,9 +7,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
-public class LoginSuccessActivity extends AppCompatActivity implements InputDialogFragment.InputDialogListener {
+public class LoginSuccessActivity extends AppCompatActivity implements InputDialog.InputDialogListener {
 
     private TextView usernameTextView;
 
@@ -32,11 +31,8 @@ public class LoginSuccessActivity extends AppCompatActivity implements InputDial
 
         // menambahkan listener pada tombol untuk berpindah ke halaman MainActivity
         homeButton.setOnClickListener(v -> {
-            InputDialogFragment dialog = new InputDialogFragment(LoginSuccessActivity.this);
-            dialog.show(getSupportFragmentManager(), "InputDialogFragment");
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            CustomDialogFragment customDialogFragment = new CustomDialogFragment();
-            customDialogFragment.show(fragmentManager, "CustomDialogFragment");
+            InputDialog dialog = new InputDialog(LoginSuccessActivity.this);
+            dialog.show(getSupportFragmentManager(), "InputDialog");
 
         });
     }

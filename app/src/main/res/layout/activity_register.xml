@@ -1,60 +1,106 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:paddingHorizontal="10dp"
-    android:paddingTop="40dp"
-    android:background="@drawable/bg3">
+    tools:context=".RegisterActivity"
+    android:background="@drawable/bglogin">
+
+    <!-- View Background -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B4FFFFFF"/>
 
     <!-- Logo Image View -->
-
     <ImageView
-        android:id="@+id/logoImageView"
+        android:id="@+id/logoimageview"
         android:layout_width="376dp"
         android:layout_height="174dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
-        android:src="@drawable/sharinggan" />
+        android:src="@drawable/logoheader" />
 
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/name_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/logoimageview"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/white"
+        android:drawableStart="@drawable/name"
+        android:drawablePadding="15dp"
         android:hint="Name"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        tools:ignore="TextFields,VisualLintTextFieldSize" />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/email_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/name_edittext"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/white"
+        android:drawableStart="@drawable/mail2"
+        android:drawablePadding="15dp"
+        android:padding="10dp"
         android:hint="Email"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:textColor="@color/black" />
 
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/password_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/email_edittext"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/white"
+        android:drawableStart="@drawable/lockpw"
+        android:drawablePadding="15dp"
+        android:padding="10dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp" />
 
     <EditText
-        android:id="@+id/editTextConfirmPassword"
+        android:id="@+id/confirmpassword_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/password_edittext"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/white"
+        android:drawableStart="@drawable/confirm"
+        android:drawablePadding="15dp"
+        android:padding="10dp"
         android:hint="Confirm Password"
         android:inputType="textPassword"
         android:minHeight="48dp" />
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/register_button"
+        android:layout_below="@id/confirmpassword_edittext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
         android:text="Register"
+        android:textColor="@color/black"
+        android:backgroundTint="#2CB0ED"
+        android:textStyle="bold"
+        tools:ignore="VisualLintButtonSize"
         android:onClick="registerButtonClicked" />
 
-
-</LinearLayout>
+</RelativeLayout>

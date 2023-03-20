@@ -11,7 +11,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-public class InputDialogFragment extends DialogFragment {
+public class InputDialog extends DialogFragment {
 
     public interface InputDialogListener {
         void onInputText(String inputText);
@@ -20,7 +20,7 @@ public class InputDialogFragment extends DialogFragment {
     private EditText mInputEditText;
     private InputDialogListener mListener;
     private String inputText;
-    public InputDialogFragment(InputDialogListener listener) {
+    public InputDialog(InputDialogListener listener) {
         mListener = listener;
     }
 

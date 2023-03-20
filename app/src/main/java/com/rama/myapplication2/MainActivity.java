@@ -13,24 +13,24 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
-    private EditText mUsernameEditText, mPasswordEditText;
-    private Button mLoginButton, mRegisterButton;
+    private EditText UsernameEditText, PasswordEditText;
+    private Button LoginButton, RegisterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mUsernameEditText = findViewById(R.id.username_edittext);
-        mPasswordEditText = findViewById(R.id.password_edittext);
-        mLoginButton = findViewById(R.id.login_button);
-        mRegisterButton = findViewById(R.id.register_button);
-        mLoginButton.setOnClickListener(new View.OnClickListener() {
+        UsernameEditText = findViewById(R.id.username_edittext);
+        PasswordEditText = findViewById(R.id.password_edittext);
+        LoginButton = findViewById(R.id.login_button);
+        RegisterButton = findViewById(R.id.register_button);
+        LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Syarat login harus input username dan password (contoh diset default loginnya sebagai admin)
-                String username = mUsernameEditText.getText().toString().trim();
-                String password = mPasswordEditText.getText().toString().trim();
+                String username = UsernameEditText.getText().toString().trim();
+                String password = PasswordEditText.getText().toString().trim();
 
                 if (username.isEmpty() || password.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Mohon lengkapi semua field!", Toast.LENGTH_SHORT).show();
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // OnClickListener ketika tombol Register di klik dan akan berpindah ke halaman RegisterActivity
-        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+        RegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showAlert();
