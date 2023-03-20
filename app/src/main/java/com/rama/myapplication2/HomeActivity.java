@@ -29,10 +29,10 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         foods = new ArrayList<>();
-        foods.add(new Food("Nasi Goreng", "Rp 15.000", R.drawable.mail));
-        foods.add(new Food("Mie Ayam", "Rp 12.000", R.drawable.mail2));
-        foods.add(new Food("Bakso", "Rp 10.000", R.drawable.lock));
-        foods.add(new Food("Sate Ayam", "Rp 20.000", R.drawable.lockpw));
+        foods.add(new Food("Nasi Goreng PDI", "Rp 75.000", R.drawable.nasgorpdi));
+        foods.add(new Food("Mie Ayam Cacing", "Rp 12.000", R.drawable.mieayamtumpah));
+        foods.add(new Food("Bakso Borak", "Rp 100.000", R.drawable.baksokepala));
+        foods.add(new Food("Sate Ular", "Rp 20.000", R.drawable.sateular));
 
         foodAdapter = new FoodAdapter(foods);
         recyclerView.setAdapter(foodAdapter);
