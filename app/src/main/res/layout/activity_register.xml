@@ -103,4 +103,19 @@
         tools:ignore="VisualLintButtonSize"
         android:onClick="registerButtonClicked" />
 
+    <Button
+        android:id="@+id/unregister_button"
+        android:layout_below="@id/register_button"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:text="i Have an account"
+        android:textColor="@color/black"
+        android:backgroundTint="#2CB0ED"
+        android:textStyle="bold"
+        tools:ignore="VisualLintButtonSize"
+        android:onClick="unregisterButtonClicked" />
+
 </RelativeLayout>
