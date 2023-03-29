@@ -1,6 +1,6 @@
 package com.rama.myapplication2;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,24 +12,25 @@ import com.rama.myapplication2.model_alertdialog.InputDialog;
 
 public class LoginSuccessActivity extends AppCompatActivity implements InputDialog.InputDialogListener {
 
-    private TextView usernameTextView;
+    private TextView EmailTextView;
 
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginsuccess);
 
         // inisialisasi TextView dan Button pada layout
-        usernameTextView = findViewById(R.id.usernameTextView);
+        EmailTextView = findViewById(R.id.email_textview);
         Button homeButton = findViewById(R.id.homeButton);
 
         // mendapatkan data username dari Intent yang dikirim dari MainActivity
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
+        // Terima data ekstra "userName" dari Intent
+        String email = getIntent().getStringExtra("email");
 
-        // menampilkan username pada TextView
-        usernameTextView.setText("Selamat datang " + username);
+        // Tampilkan nama pengguna di tampilan TextView
+        TextView welcomeMessageTextView = findViewById(R.id.textView);
+        welcomeMessageTextView.setText("Welcome, " + email + "!");
 
         // menambahkan listener pada tombol untuk berpindah ke halaman MainActivity
         homeButton.setOnClickListener(v -> {

@@ -1,6 +1,5 @@
 package com.rama.myapplication2;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +18,6 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FoodAdapter foodAdapter;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

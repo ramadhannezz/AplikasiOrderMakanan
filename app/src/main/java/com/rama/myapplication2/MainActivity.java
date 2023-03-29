@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText EmailEditText, PasswordEditText;
     private FirebaseAuth mAuth;
     String email, password;
-    TextView reg;
 
     @SuppressLint({"MissingInflatedId", "CutPasteId"})
     @Override
@@ -38,70 +36,59 @@ public class MainActivity extends AppCompatActivity {
         PasswordEditText = findViewById(R.id.password_edittext);
         Button loginButton = findViewById(R.id.login_button);
         Button registerButton = findViewById(R.id.register_button);
+
+        // OnClickListener ketika tombol Login di klik dan akan berpindah ke halaman LoginSuccessActivity
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 cekLogin();
             }
         });
-
         // OnClickListener ketika tombol Register di klik dan akan berpindah ke halaman RegisterActivity
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 showAlert();
-            }
-        });
+            }});}
+            // Class untuk verify login server firebase
+            private void cekLogin() {
+                email = EmailEditText.getText().toString();
+                password = PasswordEditText.getText().toString();
 
-        reg = findViewById(R.id.register_button);
-        reg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-            }
-        });
-    }
-
-    private void cekLogin() {
-        email = EmailEditText.getText().toString();
-        password = PasswordEditText.getText().toString();
-
-        mAuth.signInWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
-                            // jika berhasil login, pindah ke halaman LoginSuccess
-                            Intent i = new Intent(MainActivity.this, LoginSuccessActivity.class);
-                            i.putExtra("email", email);
-                            startActivity(i);
-                        } else {
-                            Toast.makeText(MainActivity.this, "Login Gagal, Email Atau Password Anda Salah!", Toast.LENGTH_SHORT).show();
+                mAuth.signInWithEmailAndPassword(email,password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+                                // jika berhasil login, pindah ke halaman LoginSuccess
+                                Intent intent = new Intent(MainActivity.this, LoginSuccessActivity.class);
+                                intent.putExtra("email", email);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(MainActivity.this, "Login Gagal, Email Atau Password Anda Salah!", Toast.LENGTH_SHORT).show();
+                            }
                         }
+                    });
+
+    }
+            // Class untuk menampilkan alert
+            private void showAlert() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Alert");
+                builder.setMessage("Apakah anda yakin ingin membuat akun!?");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Tambahkan logika yang diinginkan di sini
+                        Log.d("Alert", "Tombol OK diklik.");
+                        // Intent untuk membuka RegisterActivity
+                        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                        startActivity(intent);
                     }
                 });
-
-    }
-
-    private void showAlert() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Alert");
-        builder.setMessage("Apakah anda yakin ingin membuat akun!?");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Tambahkan logika yang diinginkan di sini
-                Log.d("Alert", "Tombol OK diklik.");
-                // Intent untuk membuka RegisterActivity
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
+                AlertDialog dialog = builder.create();
+                dialog.show();
     }
 }

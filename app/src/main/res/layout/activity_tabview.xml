@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".TabViewActivity"
+    android:background="@drawable/bglogin">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
+        app:tabBackground="@color/black"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@android:color/white"
+        app:tabTextColor="@color/teal_200"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+<androidx.viewpager2.widget.ViewPager2
+    android:id="@+id/viewPager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/tabLayout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B4FFFFFF"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_height="match_parent"
+        app:layoutManager="GridLayoutManager"/>
+
+</RelativeLayout>
