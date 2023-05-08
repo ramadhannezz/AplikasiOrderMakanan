@@ -107,6 +107,20 @@
         android:textStyle="bold"
         tools:ignore="VisualLintButtonSize" />
 
+    <Button
+        android:id="@+id/camera_button"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@+id/register_button"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="19dp"
+        android:backgroundTint="#676161"
+        android:text="Login With User ID"
+        android:textColor="@color/white"
+        android:textSize="7dp"
+        android:textStyle="bold"
+        tools:ignore="VisualLintButtonSize,TextSizeCheck,TouchTargetSizeCheck" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

@@ -36,12 +36,20 @@ public class MainActivity extends AppCompatActivity {
         PasswordEditText = findViewById(R.id.password_edittext);
         Button loginButton = findViewById(R.id.login_button);
         Button registerButton = findViewById(R.id.register_button);
+        Button cameraButton = findViewById(R.id.camera_button);
 
         // OnClickListener ketika tombol Login di klik dan akan berpindah ke halaman LoginSuccessActivity
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cekLogin();
+            }
+        });
+
+        cameraButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, CameraActivity.class));
             }
         });
         // OnClickListener ketika tombol Register di klik dan akan berpindah ke halaman RegisterActivity
