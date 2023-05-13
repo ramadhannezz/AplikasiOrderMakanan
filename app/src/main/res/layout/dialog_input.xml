@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Masukkan Nama Anda : "
+        android:text="Your Name : "
         android:textSize="18sp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
@@ -18,7 +18,7 @@
         android:id="@+id/inputEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan nama anda di sini"
+        android:hint="Input your'e name here!"
         android:inputType="text"/>
 
 </LinearLayout>

@@ -1,23 +1,20 @@
 package com.rama.myapplication2;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.rama.myapplication2.model_qrcode.ScanQRActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,65 +33,58 @@ public class MainActivity extends AppCompatActivity {
         PasswordEditText = findViewById(R.id.password_edittext);
         Button loginButton = findViewById(R.id.login_button);
         Button registerButton = findViewById(R.id.register_button);
-        Button cameraButton = findViewById(R.id.camera_button);
+        Button directloginButton = findViewById(R.id.camera_button);
+        View forgotpasswordTextView = findViewById(R.id.forgot_button);
 
-        // OnClickListener ketika tombol Login di klik dan akan berpindah ke halaman LoginSuccessActivity
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cekLogin();
-            }
-        });
+        // OnClickListener ketika tombol Login di klik dan akan berpindah ke halaman LoginSuccessActivity (with lambda)
+        loginButton.setOnClickListener(v -> cekLogin());
 
-        cameraButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, CameraActivity.class));
-            }
-        });
-        // OnClickListener ketika tombol Register di klik dan akan berpindah ke halaman RegisterActivity
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showAlert();
-            }});}
-            // Class untuk verify login server firebase
+        // OnClickListener ketika tombol Register di klik dan akan berpindah ke halaman RegisterActivity (with lambda)
+        registerButton.setOnClickListener(v -> showAlert());
+
+        // OnClickListener ketika tombol DirectLogin via Camera di klik dan akan berpindah ke halaman LoginSuccessActivity (with lambda)
+        directloginButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ScanQRActivity.class)));
+
+        // OnClickListener ketika tombol DirectLogin via Camera di klik dan akan berpindah ke halaman LoginSuccessActivity (with lambda)
+        forgotpasswordTextView.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ForgotPasswordActivity.class)));
+    }
+            // Class untuk verify login server firebase (with lambda)
             private void cekLogin() {
                 email = EmailEditText.getText().toString();
                 password = PasswordEditText.getText().toString();
 
-                mAuth.signInWithEmailAndPassword(email,password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
-                                // jika berhasil login, pindah ke halaman LoginSuccess
-                                Intent intent = new Intent(MainActivity.this, LoginSuccessActivity.class);
-                                intent.putExtra("email", email);
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(MainActivity.this, "Login Gagal, Email Atau Password Anda Salah!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                // Memeriksa apakah email dan password tidak kosong
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
 
+                // Menampilkan toast message jika email atau password kosong
+                    Toast.makeText(getApplicationContext(), "Login Failed! Please fill in all fields!", Toast.LENGTH_SHORT).show();
+                } else {
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(this, task -> {
+                                if (task.isSuccessful()) {
+                                    // Menampilkan toast message jika email atau password telah diisi sesuai dengan database
+                                    Toast.makeText(MainActivity.this, "Login Success!", Toast.LENGTH_SHORT).show();
+
+                                    // jika berhasil login, pindah ke halaman LoginSuccess
+                                    Intent intent = new Intent(MainActivity.this, LoginSuccessActivity.class);
+                                    intent.putExtra("email", email); startActivity(intent);
+                                } else {
+                                    Toast.makeText(MainActivity.this, "Login Failed! Wrong email and password!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+        }
     }
-            // Class untuk menampilkan alert
+            // Class untuk menampilkan alert (with lambda)
             private void showAlert() {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Alert");
-                builder.setMessage("Apakah anda yakin ingin membuat akun!?");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Tambahkan logika yang diinginkan di sini
-                        Log.d("Alert", "Tombol OK diklik.");
-                        // Intent untuk membuka RegisterActivity
-                        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                        startActivity(intent);
-                    }
+
+                builder.setMessage("Are you sure you want to create an account?");
+                builder.setPositiveButton("Yes", (dialog, which) -> {
+                    // Tambahkan logika yang diinginkan di sini
+                    Log.d("Alert", "The yes button is clicked");
+                    // Intent untuk membuka RegisterActivity
+                    Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                    startActivity(intent);
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();

@@ -35,7 +35,7 @@ public class InputDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("")
                 .setView(view)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         inputText = mInputEditText.getText().toString();
@@ -48,7 +48,7 @@ public class InputDialog extends DialogFragment {
                     }
 
                 })
-                .setNegativeButton("Batal", null);
+                .setNegativeButton("Close", null);
         return builder.create();
     }
 }
